@@ -1,0 +1,22 @@
+# voice-memo-pipeline 运行依赖（Python 3.10 / 3.11 x64）
+#
+# 只装服务端（FastAPI + sherpa-onnx）：
+#   pip install -r requirements.txt
+#
+# Windows 上如果 pip 解析很慢，可以按 README 的“离线安装”步骤，先用
+# scripts/fetch_wheels.py 把 wheel 下到 wheels\，再 --no-index 安装。
+
+# ---- Web 服务 ----
+fastapi==0.115.6
+uvicorn==0.34.0
+python-multipart==0.0.20
+
+# ---- 识别引擎（Paraformer-zh / 标点模型）----
+sherpa-onnx==1.10.20      # wheel 内已带 onnxruntime
+numpy==1.26.4
+scipy==1.15.3
+soundfile==0.14.0
+
+# ---- 下载模型 / 测试脚本用 ----
+requests==2.34.2
+tqdm==4.66.5

@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Syntax check
+        run: python -m compileall -q scripts server
+
+      - name: Import smoke test
+        working-directory: server
+        run: |
+          python -c "import config, db, records, worker; import app; print('routes:', len(app.app.routes))"
+
+      - name: Health of helper scripts
+        run: |
+          python scripts/get_models.py --help
+          python scripts/transcribe_para.py --help

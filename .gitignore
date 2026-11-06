@@ -1,0 +1,57 @@
+# ---- 模型（体积大，用 scripts/get_models.py 下载，不进仓库）----
+models/*
+!models/.gitkeep
+!models/README.md
+
+# ---- 服务运行时数据（录音、转写文本、数据库：都是隐私，绝不提交）----
+server/data/
+
+# ---- 本地工具二进制 ----
+tools/*.exe
+tools/*.zip
+tools/*.msi
+tools/git/
+
+# ---- 预下载的 wheel 缓存 ----
+wheels/
+
+# ---- 本地音频 / 测试素材（可能含真实录音）----
+audio/
+output/
+testdata/
+*.m4a
+*.wav
+*.mp3
+*.aac
+*.flac
+*.ogg
+*.amr
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- 日志 / 数据库 / 环境变量 ----
+*.log
+*.db
+*.db-wal
+*.db-shm
+.env
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- 临时文件 ----
+*.tmp
+*.part
+tools/

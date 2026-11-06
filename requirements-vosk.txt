@@ -1,0 +1,4 @@
+# ---- 可选：Vosk 小模型备用通道（scripts/transcribe.py）----
+# vosk 的 Python 包 import 时会 `import srt`，所以两个都要装
+vosk==0.3.45
+srt>=3.5.3
